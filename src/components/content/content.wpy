@@ -1,0 +1,23 @@
+<style lang="less">
+    @import './content.less';
+</style>
+<template>
+    <view class="content"
+          style="padding:{{indent}}rpx">
+        <slot />
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Content extends wepy.component {
+    props = {
+        indent: {
+            type: String,
+            default: '25'
+        }
+    }
+    components = {
+
+    }
+}
+</script>

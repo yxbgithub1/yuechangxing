@@ -1,0 +1,17 @@
+<template>
+    <cover-view class="align center map-panel">
+        <cover-view class="bg stress flex button">
+            <cover-view class="font large child">
+                <cover-image class="icon"
+                             src="/assets/imgs/index@1.png" />
+                <cover-view class="text">我要激活</cover-view>
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class MapPanel extends wepy.component {
+
+}
+</script>

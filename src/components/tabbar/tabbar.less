@@ -1,0 +1,25 @@
+@import '../../assets/base.less';
+.tabbar{
+    width: 100%;
+    height: @tabbar-height;
+    text-align: center;
+    background-color: #fff;
+    border-top: solid 1rpx #c1c1c1;
+    &.bottom{
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 10;
+        position: fixed;
+    }
+    .child{
+        color: #bfbfbf;
+        &.active{
+            color: #2eb572;
+        }
+    }
+    .iconfont{
+        top: 8rpx;
+        position: relative;
+    }
+}   

@@ -1,0 +1,92 @@
+<style lang="less">
+    @import './index.less';
+</style>
+<template>
+    <page class="bg light">
+        <content>
+            <serve-box>
+                <view class="font medium blod pd-bottom25">深圳交通</view>
+                <view class="me-content">
+                    <server-grid1 :datalist="grids1" />
+                </view>
+            </serve-box>
+            <serve-box>
+                <view class="font medium blod pd-bottom25">生活服务</view>
+                <view class="me-content">
+                    <server-grid2 :datalist="grids2" />
+                </view>
+            </serve-box>
+        </content>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import grids from 'grids'
+import servebox from 'box'
+import content from 'content'
+export default class Index extends wepy.page {
+    config = {
+        navigationBarTitleText: '服务'
+    }
+    components = {
+        page,
+        content,
+        'server-grid1': grids,
+        'server-grid2': grids,
+        'serve-box': servebox
+    }
+    data = {
+        grids1: [{
+            icon: 'serve-jyz',
+            url: '',
+            name: '我要加油',
+            color: '#00b5ad',
+            disable: true
+        }, {
+            icon: 'serve-wz',
+            url: '',
+            name: '违章查询',
+            color: '#9627ba'
+        }, {
+            icon: 'serve-cgs',
+            url: '',
+            name: '车管所地',
+            color: '#e61a8d'
+        }, {
+            icon: 'serve-kc',
+            url: '',
+            name: '扣车场地',
+            color: '#A5673F'
+        }, {
+            icon: 'serve-zd',
+            url: '',
+            name: '交警中队',
+            color: '#f26202'
+        }, {
+            icon: 'serve-tc',
+            url: '',
+            name: '拖车电话',
+            color: '#f26202'
+        }, {
+            icon: 'serve-ljkf',
+            url: '',
+            name: '累计扣分',
+            color: '#e61a8d'
+        }],
+        grids2: [{
+            icon: 'serve-hmgs',
+            url: '',
+            name: '号码归属',
+            color: '#00b5ad',
+            disable: true
+        }, {
+            icon: 'serve-tqyb',
+            url: '',
+            name: '天气预报',
+            color: '#9627ba',
+            disable: true
+        }]
+    }
+}
+</script>

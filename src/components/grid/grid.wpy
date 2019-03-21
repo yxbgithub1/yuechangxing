@@ -1,0 +1,33 @@
+<style lang="less">
+    @import './grid.less';
+</style>
+<template>
+    <view class="flex align center grid">
+        <block wx:for="{{datalist}}"
+               wx:key="{{index}}">
+            <view class="child">
+                <view class="iconfont {{item.icon}} {{iconsize ? iconsize:''}}" />
+                <view class="pd-top10">{{item.name}}</view>
+            </view>
+        </block>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Grid extends wepy.component {
+    props = {
+        datalist: {
+            type: Array,
+            default: undefined
+        },
+        iconsize: {
+            type: String,
+            default: undefined
+        }
+    }
+
+    onLoad() {
+        console.log(this.iconsize)
+    }
+}
+</script>

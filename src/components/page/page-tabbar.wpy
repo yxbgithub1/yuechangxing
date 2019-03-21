@@ -1,0 +1,80 @@
+<style lang="less">
+    @import './page.less';
+</style>
+<template>
+    <container class="flex col page-tabbar">
+        <view slot="content"
+              class="child u12">
+            <content>
+                <view slot="content">
+                    <view wx:if="{{index === 0}}">
+                        首页
+                    </view>
+                    <view wx:elif="{{index === 1}}">
+                        商城
+                    </view>
+                    <view wx:elif="{{index === 2}}">
+                        社区
+                    </view>
+                    <view wx:elif="{{index === 3}}">
+                        我的
+                    </view>
+                </view>
+            </content>
+        </view>
+        <view slot="tabbar"
+              class="child grow0">
+            <tabbar class="bottom"
+                    :tabbars="tabbars"></tabbar>
+        </view>
+    </container>
+</template>
+<script>
+import wepy from 'wepy'
+import tabbar from 'tabbar'
+import content from 'content'
+import container from 'container'
+
+export default class PageTabbar extends wepy.component {
+    components = {
+        tabbar,
+        content,
+        container
+    }
+
+    data = {
+        index: 0,
+        tabbars: [{
+            icon: 'map',
+            text: '导航',
+            url: '/pages/index/index'
+        }, {
+            icon: 'mall',
+            text: '商城',
+            url: '/pages/mall/index'
+        }, {
+            icon: 'community',
+            text: '社区',
+            url: '/pages/map/index'
+        }, {
+            icon: 'me',
+            text: '我的',
+            url: '/pages/me/index'
+        }]
+    }
+
+    events = {
+        tabbarTap({ index, tabbar }) {
+            this.index = index
+            // console.log(tabbar.path)
+            // wx.redirectTo({ url: tabbar.url })
+        }
+    }
+    methods = {
+    }
+
+    onShow() {
+        wx.hideTabBar()
+    }
+}
+</script>

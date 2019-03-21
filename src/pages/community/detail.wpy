@@ -1,0 +1,52 @@
+<style lang="less">
+    @import './index.less';
+</style>
+<template>
+    <page>
+        <content class="bg light">
+            <detail-box>
+                <view class="child font base blod">这是一个标题这是一个标题这是一个标题这是一个标题</view>
+                <view class="hr"></view>
+                <view>
+                    <avatar class="large">
+                        <text slot="on">yin565076134</text>
+                        <view slot="down">
+                            <text>4个月前创建</text>
+                            <text class="pd-row10">·</text>
+                            <text>10000次浏览</text>
+                        </view>
+                    </avatar>
+                </view>
+                <view class="pd-top25 align justify detail">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                </view>
+            </detail-box>
+            <detail-box>
+                <view class="child font base">100条评论</view>
+                <view>
+                    <comment datalist="{{10}}" />
+                </view>
+            </detail-box>
+        </content>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import detailbox from 'box'
+import content from 'content'
+import avatar from '@components/avatar/avatar-col'
+import comment from '@components/comment/comment'
+export default class Detail extends wepy.page {
+    config = {
+        navigationBarTitleText: '详情'
+    }
+
+    components = {
+        page,
+        content,
+        avatar,
+        comment,
+        'detail-box': detailbox
+    }
+}
+</script>

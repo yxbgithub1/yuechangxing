@@ -1,0 +1,17 @@
+<style lang="less">
+    @import './icon.less';
+</style>
+<template>
+    <text class="iconfont {{type}}"></text>
+</template>
+<script>
+import wepy from 'wepy'
+export default class IconFont extends wepy.component {
+    props = {
+        type: {
+            type: String,
+            default: ''
+        }
+    }
+}
+</script>

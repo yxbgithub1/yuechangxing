@@ -1,0 +1,14 @@
+<style lang="less">
+    @import './scroll.less';
+</style>
+<template>
+    <view class="scroll">
+        <slot />
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Scroll extends wepy.component {
+
+}
+</script>

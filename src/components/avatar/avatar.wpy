@@ -1,0 +1,20 @@
+<style lang="less">
+    @import './avatar.less';
+</style>
+<template>
+    <view class="flex avatar">
+        <view class="child grow0">
+            <image class="vertical middle img"
+                   src='/assets/imgs/cut_tools1.png' />
+        </view>
+        <view class="child">
+            <text class="ellipsis name">白食</text>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Avatar extends wepy.component {
+
+}
+</script>

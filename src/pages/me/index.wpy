@@ -1,0 +1,107 @@
+<style lang="less">
+    @import './index.less';
+</style>
+<template>
+    <page class="bg light me">
+        <view class="bg stress head">
+            <avatar class="col big tiny pd-top45" />
+        </view>
+        <content>
+            <me-box class="first">
+                <view class="font medium">我的订单</view>
+                <view class="hr"></view>
+                <view class="me-content">
+                    <grid class="font gray"
+                          :datalist="order"
+                          iconsize="medium" />
+                </view>
+            </me-box>
+            <me-box>
+                <view class="me-content">
+                    <grids :datalist="funcs"
+                           iconsize="small" />
+                </view>
+            </me-box>
+            <!-- <me-box>
+                <view class="me-content">
+                    <grids :datalist="tools"
+                           iconsize="small" />
+                </view>
+            </me-box> -->
+        </content>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import mebox from 'box'
+import grid from 'grid'
+import grids from 'grids'
+import avatar from 'avatar'
+import content from 'content'
+export default class Index extends wepy.page {
+    config = {
+        navigationBarTitleText: '个人中心',
+        navigationBarBackgroundColor: '#2eb572',
+        navigationBarTextStyle: '#fff'
+    }
+    data = {
+        order: [{
+            icon: 'order-zf',
+            url: '',
+            name: '待付款'
+        }, {
+            icon: 'order-fh',
+            url: '',
+            name: '待发货'
+        }, {
+            icon: 'order-sh',
+            url: '',
+            name: '待收货'
+        }, {
+            icon: 'order-wc',
+            url: '',
+            name: '已完成'
+        }],
+        funcs: [{
+            icon: 'funcs-sxt',
+            url: '',
+            name: '坐标上传',
+            color: '#00b5ad'
+        }, {
+            icon: 'funcs-dz',
+            url: '',
+            name: '地址管理',
+            color: '#9627ba'
+        }, {
+            icon: 'order-sh',
+            url: '',
+            name: '联系我们',
+            color: '#e61a8d'
+        }, {
+            icon: 'order-zf',
+            url: '',
+            name: '待付款',
+            color: '#A5673F'
+        }, {
+            icon: 'order-fh',
+            url: '',
+            name: '待发货',
+            color: '#21BA45'
+        }, {
+            icon: 'order-sh',
+            url: '',
+            name: '待收货',
+            color: '#f26202'
+        }]
+    }
+    components = {
+        page,
+        grid,
+        grids,
+        avatar,
+        content,
+        'me-box': mebox
+    }
+}
+</script>

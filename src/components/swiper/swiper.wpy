@@ -1,0 +1,37 @@
+<style lang="less">
+    @import './swiper.less';
+</style>
+<template>
+    <swiper style="height:100%"
+            autoplay="{{autoplay}}"
+            interval="{{interval}}"
+            duration="{{duration}}"
+            current="{{swiperCurrent}}"
+            circular="{{circular}}"
+            bindchange="swiperChange">
+        <slot />
+    </swiper>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Swiper extends wepy.component {
+    props = {
+        height: {
+            type: String
+        }
+    }
+    data = {
+        indicatorDots: false,
+        autoplay: false,
+        circular: true,
+        interval: 5000,
+        duration: 500,
+        swiperCurrent: 0
+    }
+    methods = {
+        swiperChange(e) {
+            this.$emit('swiperChange')
+        }
+    }
+}
+</script>

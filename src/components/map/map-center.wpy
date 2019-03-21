@@ -1,0 +1,15 @@
+<style lang="less">
+    @import './map.less';
+</style>
+<template>
+    <cover-view class="cut-icon">
+        <cover-image class="cover-image"
+                     src="/assets/imgs/cut_point.png" />
+    </cover-view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class MapCenter extends wepy.component {
+
+}
+</script>

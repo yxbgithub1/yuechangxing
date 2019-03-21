@@ -1,0 +1,63 @@
+<style lang="less">
+    @import './index.less';
+</style>
+<template>
+    <page class="bg light">
+        <content>
+            <post-list posts="{{5}}"
+                       :loading.sync="loading"></post-list>
+        </content>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import content from 'content'
+import postlist from '@components/post/post-list'
+export default class Index extends wepy.page {
+    config = {
+        navigationBarTitleText: '社区',
+        enablePullDownRefresh: true,
+        onReachBottomDistance: 50,
+        backgroundColor: '#2eb572'
+    }
+
+    data = {
+        loading: false
+    }
+
+    components = {
+        page,
+        content,
+        'post-list': postlist
+    }
+
+    methods = {
+    }
+
+    /**
+     * 下拉刷新
+     */
+    onPullDownRefresh() {
+        wx.showNavigationBarLoading()
+        setTimeout(() => {
+            wx.stopPullDownRefresh()
+            wx.hideNavigationBarLoading()
+        }, 2000)
+    }
+
+    /**
+     * 上拉加载
+     */
+    onReachBottom() {
+        this.loading = true
+        setTimeout(() => {
+            this.loading = false
+            this.$apply()
+        }, 1500)
+    }
+
+    onLoad() {
+    }
+}
+</script>

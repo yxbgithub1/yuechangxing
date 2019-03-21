@@ -1,0 +1,78 @@
+<style lang='less'>
+    @import './assets/base.less';
+</style>
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+import { setStore } from 'wepy-redux'
+import configStore from './store'
+const store = configStore()
+setStore(store)
+
+export default class extends wepy.app {
+    config = {
+        pages: [
+            'pages/mall/index',
+            'pages/mall/test',
+            'pages/index/index',
+            'pages/serve/index',
+            'pages/me/index',
+            'pages/community/detail',
+            'pages/community/index'
+        ],
+        window: {
+            backgroundTextStyle: 'light',
+            navigationBarBackgroundColor: '#fff',
+            navigationBarTitleText: 'WeChat',
+            navigationBarTextStyle: 'black'
+        },
+        tabBar: {
+            color: '#bfbfbf',
+            selectedColor: '#2eb572',
+            backgroundColor: '#ffffff',
+            position: 'bottom',
+            borderStyle: 'black',
+            list: [
+                {
+                    pagePath: 'pages/index/index',
+                    text: '导航',
+                    iconPath: './assets/imgs/tabbars/tabbar@01.png',
+                    selectedIconPath: './assets/imgs/tabbars/tabbar@11.png'
+                },
+                {
+                    pagePath: 'pages/mall/index',
+                    text: '商城',
+                    iconPath: 'assets/imgs/tabbars/tabbar@02.png',
+                    selectedIconPath: 'assets/imgs/tabbars/tabbar@22.png'
+                },
+                {
+                    pagePath: 'pages/serve/index',
+                    text: '服务',
+                    iconPath: 'assets/imgs/tabbars/tabbar@06.png',
+                    selectedIconPath: 'assets/imgs/tabbars/tabbar@66.png'
+                },
+                {
+                    pagePath: 'pages/community/index',
+                    text: '社区',
+                    iconPath: 'assets/imgs/tabbars/tabbar@03.png',
+                    selectedIconPath: 'assets/imgs/tabbars/tabbar@33.png'
+                },
+                {
+                    pagePath: 'pages/me/index',
+                    text: '我的',
+                    iconPath: 'assets/imgs/tabbars/tabbar@04.png',
+                    selectedIconPath: 'assets/imgs/tabbars/tabbar@44.png'
+                }
+            ]
+        },
+        permission: {
+            'scope.userLocation': {
+                desc: '你的位置信息将用于粤回收提供功能服务'
+            }
+        }
+    }
+    globalData = {
+        userInfo: null
+    }
+}
+</script>

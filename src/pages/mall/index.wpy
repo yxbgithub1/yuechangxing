@@ -1,0 +1,106 @@
+<style lang="less">
+    @import './index.less';
+</style>
+<template>
+    <page class="bg light">
+        <content indent="0">
+            <view>
+                <banner height="350"
+                        :datalist="banners" />
+            </view>
+            <view class="mg-top25">
+                <mallbox1 radius="0">
+                    <navigator class="align center test-box"
+                               url="/pages/mall/test">
+
+                    </navigator>
+                </mallbox1>
+            </view>
+            <view class="mg-top25">
+                <mallbox2 radius="0"
+                          indent="0">
+                    <tabbar-swiper :types="types"
+                                   :height.sync="height"
+                                   :datalist.sync="datalist" />
+                </mallbox2>
+            </view>
+        </content>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import banner from 'banner'
+import swiper from 'swiper'
+import mallbox from 'box'
+import content from 'content'
+import tabbarSwiper from 'tabbarSwiper'
+export default class Index extends wepy.page {
+    config = {
+        navigationBarTitleText: '商城'
+    }
+
+    components = {
+        page,
+        banner,
+        mallbox1: mallbox,
+        mallbox2: mallbox,
+        content,
+        'mall-swiper': swiper,
+        'tabbar-swiper': tabbarSwiper
+    }
+
+    data = {
+        childHeight: 520,
+        height: '0',
+        banners: [{
+            img: 'https://mzchuangweilai.com:8443/res/banner.jpg',
+            url: ''
+        }, {
+            img: 'https://mzchuangweilai.com:8443/res/banner.jpg',
+            url: ''
+        }, {
+            img: 'https://mzchuangweilai.com:8443/res/banner.jpg',
+            url: ''
+        }, {
+            img: 'https://mzchuangweilai.com:8443/res/banner.jpg',
+            url: ''
+        }],
+        types: [{
+            type: '推荐',
+            data: 5
+        }, {
+            type: '手机',
+            data: 6
+        }, {
+            type: '爆款',
+            data: 7
+        }, {
+            type: '配件',
+            data: 8
+        }, {
+            type: '周边',
+            data: 9
+        }],
+        datalist: [{}, {}, {}]
+    }
+
+    events = {
+        swiperChange() {
+            this.height = this.height * 1.2
+            console.log(1)
+            this.$apply()
+        },
+        tabbarSwiperChange({ data }) {
+            this.height = this.childHeight * Math.ceil(data / 2)
+            this.datalist = data
+            console.log(this.childHeight * data)
+        }
+    }
+
+    onShow() {
+        this.datalist = this.types[0].data
+        this.height = Math.ceil(this.types[0].data / 2) * this.childHeight
+    }
+}
+</script>

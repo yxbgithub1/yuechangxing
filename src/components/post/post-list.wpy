@@ -1,0 +1,33 @@
+<style lang="less">
+    @import './post.less';
+</style>
+<template>
+    <view class="post-list">
+        <block wx:for="{{posts}}"
+               wx:key="{{index}}">
+            <post-item></post-item>
+        </block>
+        <view wx:if="{{loading}}"
+              class="align center">加载中...</view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+import content from 'content'
+import postItem from './post-item'
+export default class PostList extends wepy.component {
+    props = {
+        posts: {
+            type: String
+        },
+        loading: {
+            type: Boolean,
+            default: false
+        }
+    }
+    components = {
+        content,
+        'post-item': postItem
+    }
+}
+</script>

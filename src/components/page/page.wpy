@@ -1,0 +1,14 @@
+<style lang="less">
+    @import './page.less';
+</style>
+<template>
+    <view class="font medium page">
+        <slot />
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Page extends wepy.component {
+
+}
+</script>

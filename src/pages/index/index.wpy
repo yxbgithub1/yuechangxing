@@ -1,0 +1,253 @@
+<style lang="less">
+    @import './index.less';
+</style>
+<template>
+    <view>
+        <map id="map"
+             enable-3D
+             show-location
+             enable-overlooking
+             scale="{{scale}}"
+             latitude="{{latitude}}"
+             longitude="{{longitude}}"
+             markers="{{cameras}}"
+             bindtap="bindtap"
+             bindupdated="bindupdated"
+             bindregionchange="bindregionchange">
+            <!--地图中心点-->
+            <map-center />
+
+            <!-- 地图工具栏 -->
+            <map-tools :cutlocation.sync="cutlocation" />
+
+            <cover-view class="cut-address font tiny">
+                范围内摄像头数量：{{address}} - 中心点地址：{{address1}}
+            </cover-view>
+
+            <cover-view class="cut-address1 font tiny">
+                当前中心点坐标{{coordinate.longitude}}-{{coordinate.latitude}}
+            </cover-view>
+
+            <map-panel />
+        </map>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+import { cameras } from '@data'
+import pageTabbar from 'page-tabbar'
+import mapTools from '@components/map/map-tools'
+import mapCenter from '@components/map/map-center'
+import mapPanel from '@components/map/map-panel'
+import QQMapWX from '@assets/js/qqmap-wx-jssdk.min.js'
+export default class Index extends wepy.page {
+    config = {
+        navigationBarTitleText: '粤畅行'
+    }
+    components = {
+        'page-tabbar': pageTabbar,
+        'map-tools': mapTools,
+        'map-center': mapCenter,
+        'map-panel': mapPanel
+    }
+    data = {
+        mapkey: 'WGRBZ-ZYJ6X-62P4M-ZE3OY-M4MBK-DMBZI',
+        cameras: [],
+        txmapsdj: null,
+        scale: 17,
+        latitude: 0,
+        longitude: 0,
+        visibleLo: 0.008,
+        visibleLa: 0.012,
+        baseLo: 0.002,
+        baseLa: 0.003,
+        regioncount: 0,
+        address: '',
+        address1: '',
+        cutlocation: false,
+        coordinate: {}
+    }
+    onReady() {
+        // this.mapCtx = wx.createMapContext('map')
+    }
+    onShow() {
+        this.mapCtx = wx.createMapContext('map')
+    }
+
+    onLoad() {
+        this.txmapsdj = new QQMapWX({ key: this.mapkey })
+        this.getLocation()
+    }
+
+    events = {
+        resetCutAddress() {
+            if (!this.cutlocation) {
+                this.mapCtx.moveToLocation()
+                this.regioncount = 1
+                this.cutlocation = false
+                this.scale = 17
+                this.$apply()
+            }
+        }
+    }
+
+    methods = {
+        bindregionchange(e) {
+            if (e.type === 'end') {
+                if (this.regioncount <= 2) this.cutlocation = !this.cutlocation
+                this.regioncount++
+                this.getScale()
+                this.getCenterLocation()
+            }
+        },
+        bindtap(e) {
+            console.log('点击')
+        },
+        bindupdated() {
+
+        },
+        bindpoitap() {
+
+        },
+        preventTouchMove() {
+            return false
+        }
+    }
+
+    /**
+     * 缩放比例
+     */
+    getScale() {
+        this.mapCtx.getScale({
+            success: (res) => {
+                const scale = Number(res.scale.toFixed(0))
+                this.setRegion(scale)
+            }
+        })
+    }
+    /**
+     * 设置可视范围
+     */
+    setRegion(s) {
+        let multiple = 1 // 范围倍数
+        console.log('缩放比例', s)
+        switch (s) {
+            case 18:
+                multiple = 1
+                break
+            case 17:
+                multiple = 2
+                break
+            case 16:
+                multiple = 4
+                break
+            case 15:
+                multiple = 8
+                break
+            case 14:
+                multiple = 16
+                break
+            case 13:
+                multiple = 32
+                break
+            case 12:
+                multiple = 64
+                break
+            default:
+                multiple = 1
+                break
+        }
+        this.visibleLo = this.baseLo * multiple
+        this.visibleLa = this.baseLa * multiple
+        this.address1 = `${this.visibleLo}-${this.visibleLa}`
+        // console.log([this.visibleLo, this.visibleLa])
+    }
+    /**
+     * 当前位置
+     */
+    getLocation() {
+        wx.getLocation({
+            type: 'gcj02',  // 返回可以用于wx.openLocation的经纬度
+            success: ({ latitude, longitude }) => {
+                this.latitude = latitude
+                this.longitude = longitude
+                this.regioncount++
+                this.$apply()
+            },
+            fail: (res) => {
+                wx.showModal({
+                    content: '地址获取失败，请检查是否打开个人设置的位置授权',
+                    showCancel: false,
+                    success(res) {
+                        if (res.confirm) {
+                            console.log('用户点击确定')
+                        }
+                    }
+                })
+            }
+        })
+    }
+
+    /**
+     * 获取中心点
+     */
+    getCenterLocation() {
+        this.mapCtx.getCenterLocation({
+            success: ({ latitude, longitude }) => {
+                this.coordinate = { latitude, longitude }
+                // this.latitude = latitude
+                // this.longitude = longitude
+                this.filterVisibleCameras()
+                this.txmapsdj.reverseGeocoder({
+                    location: {
+                        latitude,
+                        longitude
+                    },
+                    success: ({ result }) => {
+                        // this.address1 = result.address // result.address
+                        this.$apply()
+                    },
+                    fail: (res) => {
+                        console.log(res)
+                    }
+                })
+            }
+        })
+    }
+
+    /**
+     * 获取可视区域
+     */
+    getRegion() {
+        this.mapCtx.getRegion({
+            success: (res) => {
+                const { northeast } = res
+                this.visibleLo = northeast.longitude
+                this.visibleLa = northeast.latitude
+                this.address1 = `经度：${northeast.longitude},纬度：${northeast.latitude}`
+            }
+        })
+    }
+
+    /**
+     * 筛选可视范围摄像头
+     */
+    filterVisibleCameras() {
+        const { latitude, longitude } = this.coordinate
+        console.log('视野范围差值', [this.visibleLo, this.visibleLa])
+        this.cameras = (cameras.filter(item =>
+            Math.abs(longitude - item.longitude) < this.visibleLo &&
+            Math.abs(latitude - item.latitude) < this.visibleLa))
+            .map(item => ({
+                ...item,
+                width: 40,
+                height: 40,
+                iconPath: '/assets/imgs/cameras.png'
+            }))
+        // this.getRegion()
+        // this.cameras = cameras.filter(item => item.longitude <= this.visibleLo && item.latitude <= this.visibleLa)
+        // console.log('可视区域摄像头', this.cameras)
+        this.address = this.cameras.length
+    }
+}
+</script>

@@ -1,0 +1,44 @@
+<style lang="less">
+    @import './tabbar.less';
+</style>
+<template>
+    <view class="flex align tabbar">
+        <block wx:for="{{tabbars}}"
+               wx:key="{{index}}">
+            <view class="child {{ activeIndex === index ? 'active': ''}}"
+                  data-tabbar="{{item}}"
+                  data-index="{{index}}"
+                  @tap="tap">
+                <view class="iconfont font blod large {{item.icon}}"></view>
+                <text class="font mini blod">{{ item.text }}</text>
+            </view>
+        </block>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class Tabbar extends wepy.component {
+    props = {
+        taps: {
+            type: Function,
+            default: undefined
+        },
+        tabbars: {
+            type: Array,
+            default: undefined
+        }
+    }
+    data = {
+        activeIndex: 0
+    }
+
+    methods = {
+        tap({ currentTarget }) {
+            const { index, tabbar } = currentTarget.dataset
+            this.activeIndex = index
+            this.$emit('tabbarTap', { tabbar, index })
+        }
+    }
+}
+</script>

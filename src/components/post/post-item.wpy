@@ -1,0 +1,36 @@
+<style lang="less">
+    @import './post.less';
+</style>
+<template>
+    <postbox class="post-item">
+        <navigator url='/pages/community/detail'>
+            <view class="flex">
+                <view class="child font base blod">
+                    <view class="item-title ellipsis">这是一个标题</view>
+                </view>
+                <view class="child font tiny align right gray-medium">
+                    <text class="font stress blod">150</text><text class="pd-row5">/</text>10000<text class="pd-row5">·</text>10小时前
+                </view>
+            </view>
+            <view class="flex">
+                <view class="child item-content font gray-medium ellipsis-multi">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view>
+            </view>
+            <view class="hr"></view>
+            <view class="flex font tiny">
+                <avatar class="child" />
+                <view class="child align right font gray-medium">发表:2019-02-25 11:12:35</view>
+            </view>
+        </navigator>
+    </postbox>
+</template>
+<script>
+import wepy from 'wepy'
+import postbox from 'box'
+import avatar from 'avatar'
+export default class Item extends wepy.component {
+    components = {
+        avatar,
+        postbox
+    }
+}
+</script>

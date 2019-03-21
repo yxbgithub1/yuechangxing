@@ -1,0 +1,24 @@
+<style lang="less">
+    @import './box.less';
+</style>
+<template>
+    <view class="box"
+          style="border-radius:{{radius}}rpx; padding:{{indent}}rpx;">
+        <slot />
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Box extends wepy.component {
+    props = {
+        radius: {
+            type: String,
+            default: '10'
+        },
+        indent: {
+            type: String,
+            default: '25'
+        }
+    }
+}
+</script>

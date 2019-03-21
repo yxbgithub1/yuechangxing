@@ -1,0 +1,36 @@
+<style lang="less">
+    @import './grid.less';
+</style>
+<template>
+    <view class="weui-grids grid align center">
+        <block wx:for="{{datalist}}"
+               wx:key="{{index}}">
+            <view class="weui-grid"
+                  style="color:{{item.disable ? '#ccc':''}}">
+                <view style="color:{{item.disable ? '' : item.color}};"
+                      class="iconfont {{item.icon}} {{iconsize ? iconsize:''}}" />
+                <view class="weui-grid__label font dark small"
+                      style="color:{{item.disable ? '#cdcdcd' : ''}};">{{item.name}}</view>
+            </view>
+        </block>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class GridsBox extends wepy.component {
+    props = {
+        datalist: {
+            type: Array,
+            default: undefined
+        },
+        iconsize: {
+            type: String,
+            default: 'small'
+        }
+    }
+
+    onLoad() {
+        // console.log(this.datalist)
+    }
+}
+</script>

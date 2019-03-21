@@ -1,0 +1,311 @@
+@import './vars.less';
+.flex{
+    display: flex;
+    flex-wrap:nowrap; 
+    flex-direction: row;
+    align-items: center;
+    &.wrap{
+        flex-wrap:wrap; 
+    }
+    &.inline{
+        display:inline-flex;
+    }
+    &.col{
+        flex-direction: column;
+    } 
+    .child{
+        flex-grow: 1;
+        &.grow0{
+            flex-grow: 0;
+        }
+    }
+}
+
+.align{
+    &.center{
+        text-align: center;
+    }
+    &.left{
+        text-align: left;
+    }
+    &.right{
+        text-align: right;
+    }
+    &.justify{
+        text-align: justify;
+    }
+}
+.vertical{
+    &.middle{
+        vertical-align: middle;
+    }
+}
+
+
+.font{
+    &.big{
+        font-size: 42rpx;
+    }
+    &.large{
+        font-size: 36rpx;
+    }
+    &.base{
+        font-size: 30rpx;
+    }
+    &.medium{
+        font-size: 26rpx;
+    }
+    &.small{
+        font-size: 24rpx;
+    }
+    &.tiny{
+        font-size: 20rpx;
+    }
+    &.mini{
+        font-size: 19rpx;
+    }
+    &.blod{
+        font-weight: 600;
+    }
+
+    &.stress{
+        color: #2eb572;
+    }
+    &.gray-medium{
+        color: #c5c4c4;
+    }
+    &.gray-light{
+        color: #eee;
+    }
+
+    &.darker{
+        color: #333;
+    }
+    &.dark{
+        color: #666;
+    }
+    &.gray{
+        color: #999;
+    }
+    &.cr-medium {
+        color:#ccc;
+    }
+}
+
+.radius{
+    border-radius: 10rpx;
+}
+.radius-60{
+    border-radius: 60rpx;
+}
+
+.bg{
+    &.light{
+        background-color: #f8f8f8;
+    }
+    &.stress{
+        color: #fff;
+        background-color: #2eb572;
+    }
+}
+
+/*******************Iconfont********************/
+@font-face {
+    font-family: 'iconfont';  /* project id 1046514 */
+    src: url('//at.alicdn.com/t/font_1046514_edklnl9g8dh.eot');
+    src: url('//at.alicdn.com/t/font_1046514_edklnl9g8dh.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1046514_edklnl9g8dh.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1046514_edklnl9g8dh.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1046514_edklnl9g8dh.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1046514_edklnl9g8dh.svg#iconfont') format('svg');
+}
+
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &.block{
+        display: block;
+    }
+
+    &.map:before{
+        content: "\e627"; 
+    }
+    
+    &.mall:before{
+        content: "\e60b"; 
+    }
+    &.serve:before{
+        content: "\e61e"; 
+    }
+    &.me:before{
+        content: "\e690"; 
+    }
+    &.community:before{
+        content: "\e6b0"; 
+    }
+
+    //订单状态
+    &.order-zf:before{
+        content: "\e656"; 
+    }
+    &.order-fh:before{
+        content: "\e61f"; 
+    }
+    &.order-sh:before{
+        content: "\e622"; 
+    }
+    &.order-wc:before{
+        content: "\e717"; 
+    }
+
+
+    //个人中心
+    &.funcs-sxt:before{
+        content: "\e65d"; 
+    }
+    &.funcs-dz:before{
+        content: "\e694"; 
+    }
+
+    //服务-1
+    &.serve-jyz:before{
+        content: "\e6b9"; 
+    }
+    &.serve-wz:before{
+        content: "\e6f0"; 
+    }
+    &.serve-cgs:before{
+        content: "\e6d5"; 
+    }
+    &.serve-kc:before{
+        content: "\e619"; 
+    }
+    &.serve-zd:before{
+        content: "\e668"; 
+    }
+    &.serve-tc:before{
+        content: "\e621"; 
+    }
+    &.serve-ljkf:before{
+        content: "\e600"; 
+    }
+
+    //服务-2
+    &.serve-hmgs:before{
+        content: "\e637"; 
+    }
+    &.serve-tqyb:before{
+        content: "\e631"; 
+    }
+    
+}
+
+
+
+/******************Width*****************/
+.u1{width: 8.3333333333%; } 
+.u2 {width: 16.6666666667%; }
+.u3 {width: 25%; }
+.u4 {width: 33.3333333333%; }
+.u5 {width: 41.6666666667%; }
+.u6 {width: 50%; }
+.u7 {width: 58.3333333333%; }
+.u8 {width: 66.6666666667%; }
+.u9 {width: 75%; }
+.u10 {width: 83.3333333333%; }
+.u11 {width: 91.6666666667%; }
+.u12 {width: 100%; }
+
+
+/******************超出显示省略号*****************/
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ellipsis-multi{
+    overflow : hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+
+/*****************margin-padding*****************/
+.pd-left5{
+    padding-left: 5rpx;
+}
+.pd-right5{
+    padding-right: 5rpx;
+}
+.pd-left10{
+    padding-left: 10rpx;
+}
+.pd-right10{
+    padding-right: 10rpx;
+}
+.pd-left15{
+    padding-left: 15rpx;
+}
+.pd-left20{
+    padding-left: 20rpx;
+}
+
+.pd-top10{
+    padding-top: 10rpx;
+}
+.pd-top25{
+    padding-top: 25rpx;
+}
+.pd-top35{
+    padding-top: 35rpx;
+}
+.pd-top45{
+    padding-top: 45rpx;
+}
+.pd-bottom5{
+    padding-bottom: 5rpx;
+}
+.pd-bottom25{
+    padding-bottom: 25rpx;
+}
+
+.pd25{
+    padding: 25rpx;
+}
+.pd-row5{
+    padding: 0 5rpx;
+}
+.pd-row10{
+    padding: 0 10rpx;
+}
+.pd-col20{
+    padding:20rpx 0;
+}
+.pd-col25{
+    padding:25rpx 0;
+}
+.mg-top10{
+    margin-top: 10rpx;
+}
+.mg-top15{
+    margin-top: 15rpx;
+}
+.mg-top20{
+    margin-top: 20rpx;
+}
+.mg-top25{
+    margin-top: 25rpx;
+}
+
+.hr{
+    margin-top: @box-spac;
+    padding-top: @box-spac;
+    border-top: solid 1rpx #f2f2f2;
+    // border-top: solid 1rpx #999;
+}

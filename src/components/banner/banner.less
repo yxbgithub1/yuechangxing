@@ -1,0 +1,32 @@
+.banner{
+    width: 100%;
+    color:#fff;
+    position: relative;
+    background-color: #f2f2f2;
+}
+.banner image{
+   width: 100%;
+   height: 100%;
+}
+.dots{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20rpx;
+    display: flex;
+    justify-content: center;
+}
+  
+.dot{
+    margin: 0 8rpx;
+    width: 14rpx;
+    height: 14rpx;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8rpx;
+    transition: all .5s;
+    transform-origin: center;
+}
+.dot.active{
+    width: 24rpx;
+    background: rgba(45, 182, 114, 0.6);
+}
