@@ -1,0 +1,30 @@
+<style lang="scss">
+    @import './style.scss';
+</style>
+<template>
+    <view class="test-item mg-top25 border radius4"
+          style="background-image:url('{{item.image}}');">
+        <view class="flex layer">
+            <view class="child">
+                <text class="pg-left20">仅剩余：{{item.amount}}份</text>
+            </view>
+            <view class="child align right">
+                <text class="pg-right20">已申请：{{item.peoples}}人</text>
+            </view>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+import testItem from 'box'
+export default class TestItem extends wepy.component {
+    props = {
+        item: {
+            type: Object
+        }
+    }
+    components = {
+        'test-item': testItem
+    }
+}
+</script>

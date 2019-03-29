@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 1046514 */
+    src        : url('//at.alicdn.com/t/font_1046514_jrmiqln411.eot');
+    src        : url('//at.alicdn.com/t/font_1046514_jrmiqln411.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1046514_jrmiqln411.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1046514_jrmiqln411.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1046514_jrmiqln411.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1046514_jrmiqln411.svg#iconfont') format('svg');
+}
+@mixin iconEach($icons){
+    @each $key, $val in $icons{
+        &.#{$key}:before{
+            content: '#{$val}';
+        }
+    }
+}
+
+$icons:(
+    //tabbar
+    map         : '\e627',
+    mall        : '\e60b',
+    serve       : '\e61e',
+    me          : '\e690',
+    community   : '\e6b0',
+
+    //serve-1
+    'serve-jyz' : '\e6b9',
+    'serve-wz'  : '\e6f0',
+    'serve-cgs' : '\e6d5',
+    'serve-kc'  : '\e619',
+    'serve-zd'  : '\e668',
+    'serve-tc'  : '\e621',
+    'serve-ljkf': '\e600',
+
+    //serve-2
+    'serve-hmgs': '\e637',
+    'serve-tqyb': '\e631',
+    'order-wc'  : '\e717',
+
+    //me
+    'funcs-sxt' : '\e637',
+    'funcs-dz'  : '\e631',
+    
+    //weight
+    'unit-right': '\e6ab',
+);
+
+
+.iconfont {
+    font-family            : "iconfont"   !important;
+    font-size              : 16px;
+    font-style             : normal;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @include iconEach($icons);
+
+    &.block{
+        display: block;
+    }
+}

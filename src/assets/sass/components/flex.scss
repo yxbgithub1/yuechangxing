@@ -1,0 +1,21 @@
+.flex{
+    display       : flex;
+    flex-wrap     : nowrap; 
+    flex-direction: row;
+    align-items   : center;
+    &.wrap{
+        flex-wrap:wrap; 
+    }
+    &.inline{
+        display:inline-flex;
+    }
+    &.column{
+        flex-direction: column;
+    } 
+    .child{
+        flex-grow: 1;
+        &.grow0{
+            flex-grow: 0;
+        }
+    }
+}

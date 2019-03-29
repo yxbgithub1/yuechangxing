@@ -1,0 +1,53 @@
+@mixin ellipsis-multi($number:3){
+    &.multi#{$number}{
+        display: -webkit-box !important;
+        -webkit-line-clamp: $number;
+        -webkit-box-orient: vertical;
+        white-space: normal !important;
+    }
+}
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+
+    @for $i from 3 through 6 {
+        @include ellipsis-multi($i);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// @mixin ellipsis-multi($number:3){
+//     %multi#{$number}{
+//         display: -webkit-box !important;
+//         -webkit-line-clamp: $number;
+//         -webkit-box-orient: vertical;
+//         white-space: normal !important;
+//     }
+// }
+// @for $i from 3 through 6 {
+//     @include ellipsis-multi($i);
+// }
+// .ellipsis {
+//     overflow: hidden;
+//     white-space: nowrap;
+//     text-overflow: ellipsis; 
+// }
+// @mixin ellipsis($number:0){
+//     @if $number == 0 {
+//         @extend .ellipsis;
+//     }@else{
+//         @extend .ellipsis;
+//         @extend %multi#{$number};
+//     }
+// }

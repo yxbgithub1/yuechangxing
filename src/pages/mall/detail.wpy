@@ -1,0 +1,58 @@
+<style lang="scss">
+    @import './style.scss';
+</style>
+<template>
+    <page>
+        <view style="height:600rpx;">
+            <banner :datalist="banners" />
+        </view>
+
+        <box class="border col">
+            <view>产品标题</view>
+            <view class="">我的智能摄影师</view>
+            <view>价格</view>
+        </box>
+
+        <box class="border col">
+            <view>产品标题</view>
+            <view>我的智能摄影师</view>
+            <view>价格</view>
+        </box>
+
+        <view>
+            <text>1111</text>
+            <view class="iconfont unit-right"></view>
+            <view class="ellipsis multi4 u3 align justify"
+                  style=" border:solid 1rpx; height:140rpx;">阿斯顿发阿斯顿发的啥饭阿斯顿发阿斯顿发的啥饭阿斯顿发阿斯顿发的啥饭</view>
+        </view>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import box from 'box'
+import banner from 'banner'
+export default class Detail extends wepy.page {
+    components = {
+        page,
+        box,
+        banner
+    }
+
+    data = {
+        banners: [{
+            img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
+            url: ''
+        }, {
+            img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
+            url: ''
+        }, {
+            img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
+            url: ''
+        }, {
+            img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
+            url: ''
+        }]
+    }
+}
+</script>

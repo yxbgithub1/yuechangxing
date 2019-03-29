@@ -5,20 +5,15 @@ const resolvePath = (dir) => {
     return path.join(__dirname, `src/components/${dir}`)
 }
 const components = {
-    'page-tabbar': resolvePath('page/page-tabbar'),
     page: resolvePath('page/page'),
-    iconfont: resolvePath('icon/index'),
-    tabbar: resolvePath('tabbar/tabbar'),
     content: resolvePath('content/content'),
-    scroll: resolvePath('scroll/index'),
-    container: resolvePath('container/index'),
     avatar: resolvePath('avatar/avatar'),
     box: resolvePath('box/box'),
     grid: resolvePath('grid/grid'),
     grids: resolvePath('grid/grids'),
     banner: resolvePath('banner/banner'),
     swiper: resolvePath('swiper/swiper'),
-    tabbarSwiper: resolvePath('swiper/tabbar-swiper')
+    cell: resolvePath('cell/cell')
 }
 
 module.exports = {

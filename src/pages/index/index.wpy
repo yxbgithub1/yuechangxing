@@ -1,5 +1,5 @@
-<style lang="less">
-    @import './index.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
     <view>
@@ -20,11 +20,11 @@
             <!-- 地图工具栏 -->
             <map-tools :cutlocation.sync="cutlocation" />
 
-            <cover-view class="cut-address font tiny">
+            <cover-view class="cut-address fonts tiny">
                 范围内摄像头数量：{{address}} - 中心点地址：{{address1}}
             </cover-view>
 
-            <cover-view class="cut-address1 font tiny">
+            <cover-view class="cut-address1 fonts tiny">
                 当前中心点坐标{{coordinate.longitude}}-{{coordinate.latitude}}
             </cover-view>
 
@@ -35,17 +35,15 @@
 <script>
 import wepy from 'wepy'
 import { cameras } from '@data'
-import pageTabbar from 'page-tabbar'
-import mapTools from '@components/map/map-tools'
-import mapCenter from '@components/map/map-center'
-import mapPanel from '@components/map/map-panel'
+import mapTools from './components/map-tools'
+import mapCenter from './components/map-center'
+import mapPanel from './components/map-panel'
 import QQMapWX from '@assets/js/qqmap-wx-jssdk.min.js'
 export default class Index extends wepy.page {
     config = {
         navigationBarTitleText: '粤畅行'
     }
     components = {
-        'page-tabbar': pageTabbar,
         'map-tools': mapTools,
         'map-center': mapCenter,
         'map-panel': mapPanel

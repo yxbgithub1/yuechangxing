@@ -1,0 +1,79 @@
+<style lang="scss">
+    @import './style.scss';
+</style>
+<template>
+    <view>
+        <view class="flex align center fonts base border col goods-title">
+            <block wx:for="{{types}}"
+                   wx:key="{{index}}">
+                <view @tap="typeChange"
+                      data-index="{{index}}"
+                      data-item="{{item}}"
+                      class="child fonts gray6 pg-row25 {{swiperCurrent === index ? 'current':''}}">
+                    {{ item.type }}
+                </view>
+            </block>
+        </view>
+        <swiper style="height:{{height}}rpx;"
+                interval="{{interval}}"
+                duration="{{duration}}"
+                current="{{swiperCurrent}}"
+                circular="{{circular}}"
+                bindchange="tabbarSwiperChange">
+            <block wx:for="{{5}}"
+                   wx:key="{{index}}">
+                <swiper-item>
+                    <goods :datalist.sync="datalist" />
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+import goods from './goods'
+export default class GoodsSwiper extends wepy.component {
+    props = {
+        height: {
+            type: String,
+            default: '350'
+        },
+        types: {
+            type: Array,
+            default: undefined
+        },
+        datalist: {
+            type: String,
+            default: undefined
+        }
+    }
+
+    components = {
+        goods
+    }
+
+    data = {
+        indicatorDots: false,
+        autoplay: false,
+        circular: true,
+        // interval: 5000,
+        duration: 500,
+        swiperCurrent: 0
+    }
+
+    methods = {
+        tabbarSwiperChange(e) {
+            this.swiperCurrent = e.detail.current
+        },
+        typeChange(e) {
+            this.swiperChange(e.target.dataset)
+        }
+    }
+
+    swiperChange(o) {
+        const { index, item } = o
+        this.swiperCurrent = index
+        this.$emit('tabbarSwiperChange', item)
+    }
+}
+</script>

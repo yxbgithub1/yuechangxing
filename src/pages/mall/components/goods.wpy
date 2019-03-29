@@ -1,0 +1,36 @@
+<style lang="scss">
+    @import './style.scss';
+</style>
+<template>
+    <view class="goods">
+        <block wx:for="{{datalist}}"
+               wx:key="{{index}}">
+            <view class="child u6">
+                <view class="inner">
+                    <view class="img"></view>
+                    <view class="mg-top10">
+                        美图T9
+                    </view>
+                    <view class="fonts gray6 mg-row10">
+                        我的智能摄影师
+                    </view>
+                    <view class="">
+                        $199
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Goods extends wepy.component {
+    props = {
+        datalist: {
+            type: String,
+            default: undefined
+        }
+    }
+    // 320 + 34 * 3 + 45 + 25
+}
+</script>

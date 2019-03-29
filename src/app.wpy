@@ -1,5 +1,5 @@
-<style lang='less'>
-    @import './assets/base.less';
+<style lang="scss">
+    @import './assets/sass/base.scss';
 </style>
 <script>
 import wepy from 'wepy'
@@ -12,13 +12,14 @@ setStore(store)
 export default class extends wepy.app {
     config = {
         pages: [
-            'pages/mall/index',
-            'pages/mall/test',
             'pages/index/index',
+            'pages/community/detail',
+            'pages/community/index',
             'pages/serve/index',
             'pages/me/index',
-            'pages/community/detail',
-            'pages/community/index'
+            'pages/mall/tests',
+            'pages/mall/index',
+            'pages/mall/detail'
         ],
         window: {
             backgroundTextStyle: 'light',

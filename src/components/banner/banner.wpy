@@ -1,9 +1,8 @@
-<style lang="less">
-    @import './banner.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
-    <view class="banner"
-          style="height:{{ height }}rpx">
+    <view class="banner">
         <block wx:if="{{ datalist.length > 1 }}">
             <swiper style="height:100%"
                     autoplay="{{autoplay}}"
@@ -41,10 +40,6 @@
 import wepy from 'wepy'
 export default class Banner extends wepy.component {
     props = {
-        height: {
-            type: String,
-            default: '300'
-        },
         datalist: {
             type: Array,
             default: []
@@ -65,7 +60,7 @@ export default class Banner extends wepy.component {
     }
 
     onLoad() {
-        // console.log(this.datalist)
+        console.log(this.height)
     }
 }
 </script> 

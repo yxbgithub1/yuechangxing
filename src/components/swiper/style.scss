@@ -1,0 +1,26 @@
+.swiper-types{
+    .child{
+        transition: all .3s;
+        position: relative;
+        &:after {
+            width: 0;
+            left: 52%;
+            bottom: 0;
+            content: '';
+            z-index: 10;
+            height: 5rpx;
+            transition:inherit;
+            position: absolute;
+            transform: translateX(-50%);
+            transform-origin: center center;
+            background-color: #2eb572;  
+        }
+    }
+    .current{
+        font-weight: bold;
+        color: #333 !important;
+        &:after{
+            width: 70%;
+        }
+    }
+}

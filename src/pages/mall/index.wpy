@@ -1,40 +1,31 @@
-<style lang="less">
-    @import './index.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
-    <page class="bg light">
-        <content indent="0">
-            <view>
-                <banner height="350"
-                        :datalist="banners" />
-            </view>
-            <view class="mg-top25">
-                <mallbox1 radius="0">
-                    <navigator class="align center test-box"
-                               url="/pages/mall/test">
-
-                    </navigator>
-                </mallbox1>
-            </view>
-            <view class="mg-top25">
-                <mallbox2 radius="0"
-                          indent="0">
-                    <tabbar-swiper :types="types"
-                                   :height.sync="height"
-                                   :datalist.sync="datalist" />
-                </mallbox2>
-            </view>
-        </content>
+    <page>
+        <view style="height:350rpx;"
+              class="mg-bottom25 border col">
+            <banner :datalist="banners" />
+        </view>
+        <box>
+            <navigator class="align center tests"
+                       url="/pages/mall/tests"
+                       hover-class="none" />
+        </box>
+        <box>
+            <swiper :types="types"
+                    :height.sync="height"
+                    :datalist.sync="datalist" />
+        </box>
     </page>
 </template>
 <script>
 import wepy from 'wepy'
 import page from 'page'
 import banner from 'banner'
-import swiper from 'swiper'
-import mallbox from 'box'
+import box from 'box'
 import content from 'content'
-import tabbarSwiper from 'tabbarSwiper'
+import swiper from './components/swiper'
 export default class Index extends wepy.page {
     config = {
         navigationBarTitleText: '商城'
@@ -42,28 +33,26 @@ export default class Index extends wepy.page {
 
     components = {
         page,
-        banner,
-        mallbox1: mallbox,
-        mallbox2: mallbox,
         content,
-        'mall-swiper': swiper,
-        'tabbar-swiper': tabbarSwiper
+        banner,
+        box,
+        swiper
     }
 
     data = {
         childHeight: 520,
         height: '0',
         banners: [{
-            img: 'https://mzchuangweilai.com:8443/res/banner.jpg',
+            img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
             url: ''
         }, {
-            img: 'https://mzchuangweilai.com:8443/res/banner.jpg',
+            img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
             url: ''
         }, {
-            img: 'https://mzchuangweilai.com:8443/res/banner.jpg',
+            img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
             url: ''
         }, {
-            img: 'https://mzchuangweilai.com:8443/res/banner.jpg',
+            img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
             url: ''
         }],
         types: [{

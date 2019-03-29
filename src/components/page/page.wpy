@@ -1,8 +1,8 @@
-<style lang="less">
-    @import './page.less';
+<style lang="scss">
+    @import './page.scss';
 </style>
 <template>
-    <view class="font medium page">
+    <view class="fonts base bg bggray19 page">
         <slot />
     </view>
 </template>

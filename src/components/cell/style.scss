@@ -1,0 +1,24 @@
+.cell{
+    position: relative;
+    .iconfont{
+        top: 3rpx;
+        position: relative;
+    }
+    .slot{
+        display: inline-block;
+    }
+    &:first-child{
+        &:after{
+            display: none;
+        }
+    }
+    &:after{
+        position: absolute;
+        top:0;
+        right: 30rpx;
+        width: 87vw;
+        height: 1rpx;
+        background-color: #eeeeee;
+        content: '';
+    }
+}

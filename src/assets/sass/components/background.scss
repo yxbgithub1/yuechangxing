@@ -1,0 +1,12 @@
+@import '../lib/vars';
+@import '../lib/mixin';
+
+.bg{
+    @for $i from 1 through 20 {
+        $black:map-get($palette, black);
+        &.bggray#{$i}{
+            background-color: lighten($black, 5% * $i);
+        }
+    }
+    @include palette-factory($palette, background-color);
+}

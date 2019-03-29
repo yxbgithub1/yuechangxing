@@ -1,0 +1,38 @@
+<style lang="scss">
+    @import './style.scss';
+</style>
+<template>
+    <page>
+        <view class="pg25">
+            <repeat for="{{tests}}"
+                    key="index">
+                <test-item :item="item" />
+            </repeat>
+        </view>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import TestItem from './components/test-item'
+export default class Tests extends wepy.page {
+    config = {
+        navigationBarTitleText: '试用体验装'
+    }
+    components = {
+        page,
+        'test-item': TestItem
+    }
+    data = {
+        tests: [{
+            amount: 10,
+            peoples: 1000,
+            image: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg'
+        }, {
+            amount: 10,
+            peoples: 1000,
+            image: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg'
+        }]
+    }
+}
+</script>

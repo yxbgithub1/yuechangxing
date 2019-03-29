@@ -1,0 +1,30 @@
+<template>
+    <view class="fonts small">
+        <block wx:for="{{datalist}}"
+               wx:key="{{this}}">
+            <avatar class="base border top mg-top25 pg-top25">
+                <text slot="on">yin565076134</text>
+                <view slot="down">
+                    <text class="fonts stress">{{index+1}}楼</text>
+                    <text class="pg-col10">·</text>
+                    <text>2019-02-25 19:43:50</text>
+                </view>
+            </avatar>
+            <view class="align justify pg-top25">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view>
+        </block>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+import avatar from '@components/avatar/avatar-col'
+export default class Comment extends wepy.component {
+    props = {
+        datalist: {
+            type: String
+        }
+    }
+    components = {
+        avatar
+    }
+}
+</script>

@@ -1,0 +1,42 @@
+<style lang="scss">
+    @import './style.scss';
+</style>
+<template>
+    <box class="post-item border radius4 all">
+        <navigator class="pg25"
+                   url='/pages/community/detail'
+                   hover-class="none">
+            <view class="flex">
+                <view class="child">
+                    <view class="fonts medium ellipsis blod post-title">这是一个标题这是一个标题这是一个标题</view>
+                </view>
+                <view class="child align right fonts gray7 mini">
+                    <text class="fonts stress blod">150</text>
+                    <text class="pg-col5">/</text>
+                    <text>10000</text>
+                    <text class="pg-col5">·</text>
+                    <text>10小时前</text>
+                </view>
+            </view>
+            <view class="flex">
+                <view class="child fonts gray7 ellipsis multi3 pg-row25 post-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view>
+            </view>
+            <!-- <view class="mg-row25 border top"></view> -->
+            <view class="flex pg-top25 mg-top25 border top">
+                <avatar class="child fonts tiny" />
+                <view class="child align right fonts gray7 mini">发表:2019-02-25 11:12:35</view>
+            </view>
+        </navigator>
+    </box>
+</template>
+<script>
+import wepy from 'wepy'
+import box from 'box'
+import avatar from 'avatar'
+export default class Item extends wepy.component {
+    components = {
+        box,
+        avatar
+    }
+}
+</script>

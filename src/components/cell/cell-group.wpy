@@ -1,0 +1,30 @@
+<style lang="scss">
+    @import './style.scss';
+</style>
+<template>
+    <view class="cell-group">
+        <repeat for='{{datalist}}'
+                key='index'>
+            <cell :item="item" />
+        </repeat>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+import cell from './cell-item'
+export default class CellGroup extends wepy.component {
+    props = {
+        datalist: {
+            type: Array
+        }
+    }
+
+    components = {
+        cell
+    }
+
+    onLoad() {
+        console.log(this.datalist)
+    }
+}
+</script>

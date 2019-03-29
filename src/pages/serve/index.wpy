@@ -1,21 +1,21 @@
-<style lang="less">
-    @import './index.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
-    <page class="bg light">
+    <page>
         <content>
-            <serve-box>
-                <view class="font medium blod pd-bottom25">深圳交通</view>
+            <box class="pg25 border radius4">
+                <view class="fonts medium blod pg-bottom25">深圳交通</view>
                 <view class="me-content">
                     <server-grid1 :datalist="grids1" />
                 </view>
-            </serve-box>
-            <serve-box>
-                <view class="font medium blod pd-bottom25">生活服务</view>
+            </box>
+            <box class="pg25 border radius4">
+                <view class="fonts medium blod pg-bottom25">生活服务</view>
                 <view class="me-content">
                     <server-grid2 :datalist="grids2" />
                 </view>
-            </serve-box>
+            </box>
         </content>
     </page>
 </template>
@@ -23,7 +23,7 @@
 import wepy from 'wepy'
 import page from 'page'
 import grids from 'grids'
-import servebox from 'box'
+import box from 'box'
 import content from 'content'
 export default class Index extends wepy.page {
     config = {
@@ -32,9 +32,9 @@ export default class Index extends wepy.page {
     components = {
         page,
         content,
+        box,
         'server-grid1': grids,
-        'server-grid2': grids,
-        'serve-box': servebox
+        'server-grid2': grids
     }
     data = {
         grids1: [{

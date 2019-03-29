@@ -1,9 +1,8 @@
-<style lang="less">
-    @import './box.less';
+<style lang="scss">
+    @import './box.scss';
 </style>
 <template>
-    <view class="box"
-          style="border-radius:{{radius}}rpx; padding:{{indent}}rpx;">
+    <view class="box mg-bottom20">
         <slot />
     </view>
 </template>

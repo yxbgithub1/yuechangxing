@@ -1,0 +1,114 @@
+/*************************
+ border
+**************************/
+$palette:(
+    c1:#eeeeee,
+    c2:#e1e1e1,
+);
+$c1:map-get($palette, c1);
+.border{
+    $val:solid 1rpx $c1;
+    &.all{
+       border:$val;
+    }
+    &.row{
+        border-left: $val;
+        border-right: $val;
+    }
+    &.col{
+        border-top: $val;
+        border-bottom: $val; 
+    }
+    &.left{
+        border-left: $val;
+    }
+    &.right{
+        border-right: $val;
+    }
+    &.top{
+        border-top: $val;
+    }
+    &.bottom{
+        border-bottom: $val;
+    }
+};
+
+/*************************
+ border-radius
+**************************/
+$multiple: 2rpx;
+.border{
+    @for $i from 1 through 20 {
+        &.radius#{$i}{
+            border-radius: $i * $multiple;
+        }
+    }
+};
+
+/*************************
+ margin && padding
+**************************/
+@mixin boxModel($step:5){
+    $alias:('row','col','top','left','bottom','right','');
+    @for $i from 1 through 10{
+        $number: $step   * $i;
+        $val   : $number * 1rpx;
+        @for $j from 1 through length($alias){
+            $dir:nth($alias,$j);
+            @if $dir == 'row'{
+                .mg-#{$dir}#{$number}{
+                    margin: $val 0;
+                }
+                .pg-#{$dir}#{$number}{
+                    padding: $val 0;
+                }
+            }
+            @else if $dir == 'col'{
+                .mg-#{$dir}#{$number}{
+                    margin: 0 $val;
+                }
+                .pg-#{$dir}#{$number}{
+                    padding: 0 $val;
+                }
+            }
+            @else if $dir == 'top' or $dir == 'left' or $dir == 'bottom' or $dir == 'right' {
+                .mg-#{$dir}#{$number}{
+                    margin-#{$dir}:$val;
+                }
+                .pg-#{$dir}#{$number} {
+                    padding-#{$dir}:$val;
+                }
+            }
+            @else{
+                .mg#{$number}{
+                    margin:$val;
+                }
+                .pg#{$number}{
+                    padding:$val;
+                }
+            }
+        }
+    }
+};
+@include boxModel();
+
+/*************************
+ content
+**************************/
+@mixin widths($column: 12) {
+    $col: 100 / $column;
+    @for $i from 1 through $column {
+        $width:percentage($col * $i / 100);
+        @if $i < 10{
+            .u#{$i} {
+                width: $width;
+            }
+        }@else{
+            $x: str-slice('#{$i}',2, 3);
+            .u1#{$x} {
+                 width: $width;
+            }
+        }
+    }
+}
+@include widths();

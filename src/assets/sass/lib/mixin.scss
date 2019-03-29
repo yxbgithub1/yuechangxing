@@ -1,0 +1,18 @@
+// List数据类型设置CSS样式
+@mixin list-factory($list, $key){
+    @for $i from 1 through length($list){
+        $val: nth($list, $i);
+        &.#{$val}{
+            #{$key}:$val;
+        }
+    }
+};
+
+// 生成颜色样式
+@mixin palette-factory($map, $key){
+    @each $name, $color in $map {
+        &.#{$name}{
+            #{$key}: $color;
+        }
+    }
+}

@@ -1,5 +1,5 @@
-<style lang="less">
-    @import './grid.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
     <view class="flex align center grid">
@@ -24,10 +24,6 @@ export default class Grid extends wepy.component {
             type: String,
             default: undefined
         }
-    }
-
-    onLoad() {
-        console.log(this.iconsize)
     }
 }
 </script>

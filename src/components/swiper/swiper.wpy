@@ -1,5 +1,5 @@
-<style lang="less">
-    @import './swiper.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
     <swiper style="height:100%"

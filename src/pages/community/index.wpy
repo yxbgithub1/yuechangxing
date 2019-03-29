@@ -1,10 +1,10 @@
-<style lang="less">
-    @import './index.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
-    <page class="bg light">
+    <page>
         <content>
-            <post-list posts="{{5}}"
+            <post-list datalist="{{5}}"
                        :loading.sync="loading"></post-list>
         </content>
     </page>
@@ -13,7 +13,7 @@
 import wepy from 'wepy'
 import page from 'page'
 import content from 'content'
-import postlist from '@components/post/post-list'
+import postlist from './components/post-list'
 export default class Index extends wepy.page {
     config = {
         navigationBarTitleText: '社区',
@@ -33,6 +33,7 @@ export default class Index extends wepy.page {
     }
 
     methods = {
+
     }
 
     /**
@@ -55,9 +56,6 @@ export default class Index extends wepy.page {
             this.loading = false
             this.$apply()
         }, 1500)
-    }
-
-    onLoad() {
     }
 }
 </script>

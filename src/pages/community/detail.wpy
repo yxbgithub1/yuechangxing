@@ -1,41 +1,42 @@
-<style lang="less">
-    @import './index.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
     <page>
-        <content class="bg light">
-            <detail-box>
-                <view class="child font base blod">这是一个标题这是一个标题这是一个标题这是一个标题</view>
-                <view class="hr"></view>
-                <view>
-                    <avatar class="large">
-                        <text slot="on">yin565076134</text>
-                        <view slot="down">
-                            <text>4个月前创建</text>
-                            <text class="pd-row10">·</text>
-                            <text>10000次浏览</text>
-                        </view>
-                    </avatar>
+        <content>
+            <!-- 文章内容 -->
+            <box class="pg25 border radius4">
+                <view class="child fonts medium blod border bottom mg-bottom25 pg-bottom25">
+                    <text>这是一个标题这是一个标题这是一个标题这是一个标题</text>
                 </view>
-                <view class="pd-top25 align justify detail">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                <avatar class="large">
+                    <text slot="on">yin565076134</text>
+                    <view slot="down">
+                        <text>4个月前创建</text>
+                        <text class="pg-col10">·</text>
+                        <text>10000次浏览</text>
+                    </view>
+                </avatar>
+                <view class="align justify pg-top25 detail">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内
                 </view>
-            </detail-box>
-            <detail-box>
-                <view class="child font base">100条评论</view>
+            </box>
+            <!-- 评论列表 -->
+            <box class="pg25 border radius4">
+                <view class="child">100条评论</view>
                 <view>
                     <comment datalist="{{10}}" />
                 </view>
-            </detail-box>
+            </box>
         </content>
     </page>
 </template>
 <script>
 import wepy from 'wepy'
 import page from 'page'
-import detailbox from 'box'
+import box from 'box'
 import content from 'content'
 import avatar from '@components/avatar/avatar-col'
-import comment from '@components/comment/comment'
+import comment from './components/comment'
 export default class Detail extends wepy.page {
     config = {
         navigationBarTitleText: '详情'
@@ -44,9 +45,9 @@ export default class Detail extends wepy.page {
     components = {
         page,
         content,
+        box,
         avatar,
-        comment,
-        'detail-box': detailbox
+        comment
     }
 }
 </script>

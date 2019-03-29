@@ -1,0 +1,11 @@
+@import '../lib/mixin';
+
+$aligns:(center, left, right, justify);
+.align{
+    @include list-factory($aligns, text-align);
+}
+
+$verticals:(middle, baseline, top);
+.vertical{
+    @include list-factory($verticals, vertical-align);
+}

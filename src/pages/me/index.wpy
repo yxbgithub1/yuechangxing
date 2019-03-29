@@ -1,107 +1,122 @@
-<style lang="less">
-    @import './index.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
-    <page class="bg light me">
-        <view class="bg stress head">
-            <avatar class="col big tiny pd-top45" />
+    <page class="me">
+        <view class="bg bggray20 head border bottom">
+            <avatar class="big">
+                <text slot="on">白食</text>
+                <view slot="down">
+                    <text>余额：1000</text>
+                </view>
+            </avatar>
         </view>
-        <content>
-            <me-box class="first">
-                <view class="font medium">我的订单</view>
-                <view class="hr"></view>
-                <view class="me-content">
-                    <grid class="font gray"
-                          :datalist="order"
-                          iconsize="medium" />
-                </view>
-            </me-box>
-            <me-box>
-                <view class="me-content">
-                    <grids :datalist="funcs"
-                           iconsize="small" />
-                </view>
-            </me-box>
-            <!-- <me-box>
-                <view class="me-content">
-                    <grids :datalist="tools"
-                           iconsize="small" />
-                </view>
-            </me-box> -->
-        </content>
+        <view class="border col mg-top25">
+            <cell-group :datalist="first" />
+            <cell text="订单管理"
+                  icon="order-wc">
+                <text>13537698122</text>
+            </cell>
+        </view>
+        <view class="border col mg-top25">
+            <cell text="订单管理"
+                  icon="order-wc">
+                <text>13537698122</text>
+            </cell>
+        </view>
     </page>
 </template>
 <script>
 import wepy from 'wepy'
 import page from 'page'
-import mebox from 'box'
-import grid from 'grid'
-import grids from 'grids'
-import avatar from 'avatar'
-import content from 'content'
+import cell from 'cell'
+import cellGroup from 'cell-group'
+import avatar from '@components/avatar/avatar-col'
 export default class Index extends wepy.page {
     config = {
-        navigationBarTitleText: '个人中心',
-        navigationBarBackgroundColor: '#2eb572',
-        navigationBarTextStyle: '#fff'
-    }
-    data = {
-        order: [{
-            icon: 'order-zf',
-            url: '',
-            name: '待付款'
-        }, {
-            icon: 'order-fh',
-            url: '',
-            name: '待发货'
-        }, {
-            icon: 'order-sh',
-            url: '',
-            name: '待收货'
-        }, {
-            icon: 'order-wc',
-            url: '',
-            name: '已完成'
-        }],
-        funcs: [{
-            icon: 'funcs-sxt',
-            url: '',
-            name: '坐标上传',
-            color: '#00b5ad'
-        }, {
-            icon: 'funcs-dz',
-            url: '',
-            name: '地址管理',
-            color: '#9627ba'
-        }, {
-            icon: 'order-sh',
-            url: '',
-            name: '联系我们',
-            color: '#e61a8d'
-        }, {
-            icon: 'order-zf',
-            url: '',
-            name: '待付款',
-            color: '#A5673F'
-        }, {
-            icon: 'order-fh',
-            url: '',
-            name: '待发货',
-            color: '#21BA45'
-        }, {
-            icon: 'order-sh',
-            url: '',
-            name: '待收货',
-            color: '#f26202'
-        }]
-    }
+        navigationBarTitleText: '个人中心'
+    };
+
     components = {
         page,
-        grid,
-        grids,
         avatar,
-        content,
-        'me-box': mebox
+        cell,
+        'cell-group': cellGroup
+    }
+
+    data = {
+        first: [
+            {
+                icon: 'order-wc',
+                text: '订单管理',
+                slot: '111'
+            },
+            {
+                icon: 'funcs-dz',
+                text: '地址管理',
+                slot: '13537608122'
+            }
+        ],
+        order: [
+            {
+                icon: 'order-zf',
+                url: '',
+                name: '待付款'
+            },
+            {
+                icon: 'order-fh',
+                url: '',
+                name: '待发货'
+            },
+            {
+                icon: 'order-sh',
+                url: '',
+                name: '待收货'
+            },
+            {
+                icon: 'order-wc',
+                url: '',
+                name: '已完成'
+            }
+        ],
+        funcs: [
+            {
+                icon: 'funcs-sxt',
+                url: '',
+                name: '坐标上传',
+                color: '#00b5ad'
+            },
+            {
+                icon: 'funcs-dz',
+                url: '',
+                name: '地址管理',
+                color: '#9627ba'
+            },
+            {
+                icon: 'order-sh',
+                url: '',
+                name: '联系我们',
+                color: '#e61a8d'
+            },
+            {
+                icon: 'order-zf',
+                url: '',
+                name: '待付款',
+                color: '#A5673F'
+            },
+            {
+                icon: 'order-fh',
+                url: '',
+                name: '待发货',
+                color: '#21BA45'
+            },
+            {
+                icon: 'order-sh',
+                url: '',
+                name: '待收货',
+                color: '#f26202'
+            }
+        ]
     }
 }
 </script>

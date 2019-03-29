@@ -1,0 +1,30 @@
+<style lang="scss">
+    @import './style.scss';
+</style>
+<template>
+    <view class="flex cell bg bggray20 pg30">
+        <view class="child">
+            <text class="iconfont pg-right15 {{item.icon}}" />
+            <text>{{item.text}}</text>
+        </view>
+        <view class="child align right">
+            <text class="fonts gray8">{{item.slot}}</text>
+            <text class="iconfont fonts gray9 pg-left15 unit-right" />
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Cell extends wepy.component {
+    props = {
+        item: {
+            type: Object,
+            default: undefined
+        }
+    }
+
+    onLoad() {
+        console.log(1, this.item)
+    }
+}
+</script>

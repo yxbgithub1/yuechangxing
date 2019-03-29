@@ -1,5 +1,5 @@
-<style lang="less">
-    @import './avatar.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
     <view class="flex avatar">

@@ -1,17 +1,17 @@
-<style lang="less">
-    @import './avatar.less';
+<style lang="scss">
+    @import './style.scss';
 </style>
 <template>
-    <view class="flex avatar font medium">
+    <view class="flex avatar">
         <view class="child grow0">
             <image class="vertical middle img"
                    src='/assets/imgs/cut_tools1.png' />
         </view>
-        <view class="child flex col pd-left20">
-            <view class="child u12 pd-bottom5">
+        <view class="child flex column pg-left20">
+            <view class="child u12 pg-bottom5">
                 <slot name="on" />
             </view>
-            <view class="child u12 font gray">
+            <view class="child u12 fonts gray8">
                 <slot name="down" />
             </view>
         </view>
