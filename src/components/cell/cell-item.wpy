@@ -9,7 +9,7 @@
         </view>
         <view class="child align right">
             <text class="fonts gray8">{{item.slot}}</text>
-            <text class="iconfont fonts gray9 pg-left15 unit-right" />
+        <text class="iconfont fonts gray9 pg-left15 unit-right" />
         </view>
     </view>
 </template>
