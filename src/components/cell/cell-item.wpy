@@ -3,13 +3,17 @@
 </style>
 <template>
     <view class="flex cell bg bggray20 pg30">
-        <view class="child">
-            <text class="iconfont pg-right15 {{item.icon}}" />
-            <text>{{item.text}}</text>
+        <view class="child vertical-middle">
+            <view>
+                <text class="iconfont pg-right15 {{item.icon}}" />
+                <text>{{item.text}}</text>
+            </view>
         </view>
-        <view class="child align right">
-            <text class="fonts gray8">{{item.slot}}</text>
-        <text class="iconfont fonts gray9 pg-left15 unit-right" />
+        <view class="child align right vertical-middle">
+            <view>
+                <text class="fonts gray8">{{item.slot}}</text>
+                <text class="iconfont fonts gray9 pg-left15 unit-right" />
+            </view>
         </view>
     </view>
 </template>

@@ -1,6 +1,7 @@
 <style lang="scss">
     @import './assets/sass/base.scss';
 </style>
+
 <script>
 import wepy from 'wepy'
 import 'wepy-async-function'
@@ -12,20 +13,29 @@ setStore(store)
 export default class extends wepy.app {
     config = {
         pages: [
+            'pages/address/insert',
+            'pages/address/index',
+
+            'pages/mall/order',
+            'pages/mall/shopping',
+            'pages/mall/detail',
+            'pages/mall/index',
+            'pages/mall/tests',
+
             'pages/index/index',
+
             'pages/community/detail',
             'pages/community/index',
+
             'pages/serve/index',
-            'pages/me/index',
-            'pages/mall/tests',
-            'pages/mall/index',
-            'pages/mall/detail'
+            'pages/me/index'
         ],
         window: {
             backgroundTextStyle: 'light',
             navigationBarBackgroundColor: '#fff',
             navigationBarTitleText: 'WeChat',
-            navigationBarTextStyle: 'black'
+            navigationBarTextStyle: 'black',
+            backgroundColor: '#f2f2f2'
         },
         tabBar: {
             color: '#bfbfbf',

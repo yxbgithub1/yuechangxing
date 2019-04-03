@@ -1,0 +1,41 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <view class="navbar">
+        <view class="flex align center pg-row25 tab">
+            <repeat for="{{tabs}}"
+                    key="index">
+                <view id="{{index}}"
+                      class="child {{activeIndex == index ? 'current':''}}"
+                      @tap="tabClick">
+                    <text class="pg-bottom20">{{item}}</text>
+                </view>
+            </repeat>
+        </view>
+        <view class="mg-top20">
+            <slot name="panel" />
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Tabbar extends wepy.component {
+    props = {
+        tabs: {
+            type: Array,
+            default: undefined
+        }
+    }
+    data = {
+        activeIndex: 0
+    }
+    methods = {
+        tabClick({ currentTarget }) {
+            const { id } = currentTarget
+            this.activeIndex = id
+            this.$emit('tabClick', id)
+        }
+    }
+}
+</script>

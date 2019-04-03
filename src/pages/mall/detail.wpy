@@ -3,40 +3,53 @@
 </style>
 <template>
     <page>
-        <view style="height:600rpx;">
+        <!-- banners -->
+        <view style="height:700rpx;">
             <banner :datalist="banners" />
         </view>
 
-        <box class="border col">
-            <view>产品标题</view>
-            <view class="">我的智能摄影师</view>
-            <view>价格</view>
+        <!-- 产品标题 -->
+        <box class="border col pg25">
+            <view class="fonts medium">产品标题产品标题产品标题产品标题</view>
+            <view class="fonts gray7 pg-row10">我的智能摄影师我的智能摄影师我的智能摄影师我的智能摄影师我的智能摄影师我的智能摄影师我的智能摄影师</view>
+            <view class="fonts red">
+                <text>¥1000</text>
+            </view>
         </box>
 
+        <!-- 产品介绍&详情 -->
         <box class="border col">
-            <view>产品标题</view>
-            <view>我的智能摄影师</view>
-            <view>价格</view>
+            <navbar :tabs="tabs">
+                <view style="min-height:1000px;"
+                      slot="panel">
+                    <view hidden="{{panelIndex !=0}}">
+                        产品介绍
+                    </view>
+                    <view hidden="{{panelIndex !=1}}">
+                        产品详情
+                    </view>
+                </view>
+            </navbar>
         </box>
 
-        <view>
-            <text>1111</text>
-            <view class="iconfont unit-right"></view>
-            <view class="ellipsis multi4 u3 align justify"
-                  style=" border:solid 1rpx; height:140rpx;">阿斯顿发阿斯顿发的啥饭阿斯顿发阿斯顿发的啥饭阿斯顿发阿斯顿发的啥饭</view>
-        </view>
+        <!-- 添加购物车 -->
+        <shopbar />
     </page>
 </template>
 <script>
 import wepy from 'wepy'
 import page from 'page'
 import box from 'box'
+import navbar from 'navbar'
 import banner from 'banner'
+import shopbar from './components/shopbar'
 export default class Detail extends wepy.page {
     components = {
         page,
         box,
-        banner
+        banner,
+        navbar,
+        shopbar
     }
 
     data = {
@@ -52,7 +65,15 @@ export default class Detail extends wepy.page {
         }, {
             img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
             url: ''
-        }]
+        }],
+        tabs: ['商品介绍', '常见问题'],
+        panelIndex: 0
+    }
+
+    events = {
+        tabClick(index) {
+            this.panelIndex = index
+        }
     }
 }
 </script>

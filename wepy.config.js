@@ -13,7 +13,12 @@ const components = {
     grids: resolvePath('grid/grids'),
     banner: resolvePath('banner/banner'),
     swiper: resolvePath('swiper/swiper'),
-    cell: resolvePath('cell/cell')
+    cell: resolvePath('cell/cell'),
+    'cell-input': resolvePath('cell/cell-input'),
+    navbar: resolvePath('navbar/navbar'),
+    fixed: resolvePath('fixed/fixed'),
+    'cell-group': resolvePath('cell/cell-group'),
+    check: resolvePath('./form/check')
 }
 
 module.exports = {

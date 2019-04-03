@@ -1,0 +1,48 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <fixed>
+        <view class="flex align center "
+              style="height:105rpx;">
+            <view class="child flex fonts gray5 border col">
+                <view class="child border right vertical-middle">
+                    <view class="mg-top10">
+                        <view class="iconfont unit-kf fonts large gray5"></view>
+                        <view class="fonts mini mg-top5">客服</view>
+                    </view>
+                </view>
+                <navigator class="child vertical-middle shop"
+                           url="/pages/mall/shopping"
+                           hover-class="none">
+                    <view class="mg-top10">
+                        <view class="iconfont unit-gwc fonts large gray5">
+                            <text class="count">5</text>
+                        </view>
+                        <view class="fonts mini mg-top5">购物车</view>
+                    </view>
+                </navigator>
+            </view>
+            <view class="child u5 flex fonts gray10">
+                <view class="child bg bggray7 u12 vertical-middle">
+                    <view>加购物车</view>
+                </view>
+                <view class="child bg pink u12 vertical-middle">
+                    <view>立即购买</view>
+                </view>
+            </view>
+        </view>
+    </fixed>
+</template>
+<script>
+import wepy from 'wepy'
+import fixed from 'fixed'
+export default class Shopbar extends wepy.component {
+    props = {
+    }
+
+    components = {
+        fixed
+    }
+}
+</script>

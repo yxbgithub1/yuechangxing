@@ -1,0 +1,14 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <view class="fixed u12 bg bggray20">
+        <slot />
+    </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Fixed extends wepy.component {
+
+}
+</script>

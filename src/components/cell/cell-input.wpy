@@ -2,22 +2,22 @@
     @import './style.scss';
 </style>
 <template>
-    <view class="flex cell bg bggray20 pg25 flexible">
-        <view class="child">
-            <text class="iconfont pg-right15 {{icon}}" />
+    <view class="flex cell bg bggray20 pg30 full">
+        <view class="child u10">
             <text>{{text}}</text>
-        </view>
-        <view class="child align right">
-            <view class="slot">
+            <view class="u9 slot">
                 <slot />
             </view>
-            <text class="iconfont fonts gray9 pg-left15 {{rightIcon}}" />
+        </view>
+        <view class="child align right vertical-middle">
+            <text hidden="{{!rightIcon}}"
+                  class="iconfont fonts gray9 pg-left15 {{rightIcon}}" />
         </view>
     </view>
 </template>
 <script>
 import wepy from 'wepy'
-export default class Cell extends wepy.component {
+export default class CellInput extends wepy.component {
     props = {
         icon: {
             type: String,
@@ -29,7 +29,7 @@ export default class Cell extends wepy.component {
         },
         rightIcon: {
             type: String,
-            default: 'unit-right'
+            default: undefined
         }
     }
 }

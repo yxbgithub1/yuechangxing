@@ -1,0 +1,13 @@
+@import '../lib/mixin';
+$duration:(
+    fast: 0.25s,
+    slow: 0.5s,
+);
+
+.duration{
+    @each $name, $val in $duration {
+        &.#{$name}{
+           transition: $val ease;
+        }
+    }
+}

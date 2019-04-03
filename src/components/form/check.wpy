@@ -1,0 +1,16 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <view class="iconfont {{ item.checked ? 'unit-selected': 'unit-unselected'}}"></view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Check extends wepy.component {
+    props = {
+        item: {
+            type: Object
+        }
+    }
+}
+</script>

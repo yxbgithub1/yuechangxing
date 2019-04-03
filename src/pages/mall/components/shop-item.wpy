@@ -1,0 +1,81 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <box class="flex pg25 shop-item">
+        <view class="child flex pg-row15"
+              @tap="checkClick"
+              data-item="{{item}}">
+            <view class="child vertical-middle">
+                <view class="duration fast fonts large iconfont {{ item.checked ? 'pink unit-selected': 'gray8 unit-unselected'}}"></view>
+            </view>
+            <view class="child">
+                <view class="mg-left20 img bg bggray19"></view>
+            </view>
+        </view>
+        <view class="child u8 vertical-middle">
+            <view class="mg-left20">
+                <view class="title ellipsis multi2">{{item.title}}</view>
+                <view class="fonts tiny gray6 mg-top20">
+                    {{item.format}}
+                </view>
+            </view>
+        </view>
+        <view class="child align right vertical-middle">
+            <view>
+                <text>¥{{item.price}}</text>
+                <view class="flex align center border radius1 all mg-top40">
+                    <view @tap="decrement"
+                          data-item="{{item}}"
+                          class="child count bg bggray19 vertical-middle">
+                        <text class="duration fast fonts bold4 {{item.amount == 1 ? 'gray8':''}}">-</text>
+                    </view>
+                    <view class="child count">
+                        <text class="mg-top5">{{item.amount}}</text>
+                    </view>
+                    <view @tap="increment"
+                          data-item="{{item}}"
+                          class="child count bg bggray19 vertical-middle">
+                        <text class="fonts bold4">+</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </box>
+</template>
+<script>
+import wepy from 'wepy'
+import box from 'box'
+export default class ShopItem extends wepy.component {
+    props = {
+        item: {
+            type: Object,
+            default: undefined
+        }
+    }
+    components = { box }
+
+    methods = {
+        checkClick(e) {
+            const { item } = e.currentTarget.dataset
+            this.item.checked = !item.checked
+            this.$emit('checkClick', item)
+        },
+        /** 递减 */
+        decrement(e) {
+            const { item } = e.currentTarget.dataset
+            // 购买数量不得低于1pcs
+            if (item.amount > 1) {
+                this.item.amount = --item.amount
+                this.$emit('countTotalPrice')
+            }
+        },
+        /** 递增 */
+        increment(e) {
+            const { item } = e.currentTarget.dataset
+            this.item.amount = ++item.amount
+            this.$emit('countTotalPrice')
+        }
+    }
+}
+</script>

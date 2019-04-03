@@ -2,7 +2,7 @@
     @import './page.scss';
 </style>
 <template>
-    <view class="fonts base bg bggray19 page">
+    <view class="web-font fonts gray3 base bg bggray19 page bold3">
         <slot />
     </view>
 </template>

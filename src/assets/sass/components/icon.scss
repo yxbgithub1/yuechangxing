@@ -1,12 +1,13 @@
 @font-face {
     font-family: 'iconfont';  /* project id 1046514 */
-    src        : url('//at.alicdn.com/t/font_1046514_jrmiqln411.eot');
-    src        : url('//at.alicdn.com/t/font_1046514_jrmiqln411.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1046514_jrmiqln411.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1046514_jrmiqln411.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1046514_jrmiqln411.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1046514_jrmiqln411.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1046514_7y2eii31hoc.eot');
+    src: url('//at.alicdn.com/t/font_1046514_7y2eii31hoc.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1046514_7y2eii31hoc.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1046514_7y2eii31hoc.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1046514_7y2eii31hoc.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1046514_7y2eii31hoc.svg#iconfont') format('svg');
 }
+
 @mixin iconEach($icons){
     @each $key, $val in $icons{
         &.#{$key}:before{
@@ -42,7 +43,12 @@ $icons:(
     'funcs-dz'  : '\e631',
     
     //weight
-    'unit-right': '\e6ab',
+    'unit-right'     : '\e6ab',
+    'unit-gwc'       : '\e61b',
+    'unit-kf'        : '\e602',
+    'unit-selected'  : '\e624',
+    'unit-unselected': '\e676',
+    'unit-tz'        : '\e647',
 );
 
 

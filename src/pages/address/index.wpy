@@ -1,0 +1,55 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <page>
+        <view class="pg25 fonts small">
+            <text class="iconfont unit-tz"></text>
+            尊敬的客户，根据国家邮政局通知：自2018年9月1日起，收件人必须为实名，请按规定进行填写，谢谢！
+        </view>
+
+        <box class="pg25">
+            <view class="flex">
+                <view class="child">姓名</view>
+                <view class="child align right">13537608122</view>
+            </view>
+            <view class="pg-row25 mg-bottom25 border bottom">
+                广东省 深圳市 宝安区 福园二路
+            </view>
+            <view class="flex">
+                <view class="child">默认地址</view>
+                <view class="child align right">
+                    <button class="fonts mini button mg-right25">编辑</button>
+                    <button class="fonts mini button">删除</button>
+                </view>
+            </view>
+        </box>
+
+        <fixed class="flex center fonts gray10">
+            <view class="child bg bggray7 u1 vertical-middle"
+                  style="height:100rpx;">
+                <text>使用微信地址</text>
+            </view>
+            <navgator class="child bg pink u1 vertical-middle" url="/pages/address/">
+                <text>新增收获地址</text>
+            </navgator>
+        </fixed>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import box from 'box'
+import fixed from 'fixed'
+export default class Order extends wepy.page {
+    config = {
+        navigationBarTitleText: '收获地址'
+    }
+
+    components = {
+        page,
+        box,
+        fixed
+    }
+}
+</script>

@@ -1,0 +1,80 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <page>
+        <form class="mg-top20">
+            <box>
+                <cell1 text="收件人名">
+                    <input type="text"
+                           class="mg-left20"
+                           placeholder="真实姓名" />
+                </cell1>
+                <cell2 text="联系电话">
+                    <input type="number"
+                           class="mg-left20"
+                           placeholder="手机号码" />
+                </cell2>
+                <cell3 text="选择地区"
+                       rightIcon="unit-right">
+                    <picker mode="region"
+                            bindchange="bindPickerChange"
+                            value="{{region}}"
+                            custom-item="{{customItem}}">
+                        <input type="number"
+                               disabled="true"
+                               class="mg-left20"
+                               placeholder="{{address}}" />
+                    </picker>
+                </cell3>
+                <cell4 text="详细地址">
+                    <input type="text"
+                           class="mg-left20"
+                           placeholder="街道门牌信息" />
+                </cell4>
+            </box>
+
+            <box class="flex pg-row25 pg-col30">
+                <view class="child vertical-middle">
+                    <text>设为默认收获地址</text>
+                </view>
+                <view class="child align right">
+                    <switch style="zoom:0.9" />
+                </view>
+            </box>
+
+            <view class="mg-top50">
+                <button class="u11 bg pink">
+                    <text class="fonts gray10">确认</text>
+                </button>
+            </view>
+        </form>
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+import box from 'box'
+import cell from 'cell-input'
+export default class Insert extends wepy.page {
+    components = {
+        page,
+        box,
+        cell1: cell,
+        cell2: cell,
+        cell3: cell,
+        cell4: cell
+    }
+    data = {
+        address: '请选择省市区',
+        region: ['广东省', '广州市', '海珠区'],
+        customItem: '全部'
+    }
+    methods = {
+        bindPickerChange(e) {
+            this.address = e.detail.value
+            console.log(e.detail.value)
+        }
+    }
+}
+</script>

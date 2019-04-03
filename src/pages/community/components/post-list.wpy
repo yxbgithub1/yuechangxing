@@ -13,7 +13,6 @@
 </template>
 <script>
 import wepy from 'wepy'
-import content from 'content'
 import postItem from './post-item'
 export default class PostList extends wepy.component {
     props = {
@@ -26,7 +25,6 @@ export default class PostList extends wepy.component {
         }
     }
     components = {
-        content,
         'post-item': postItem
     }
 }

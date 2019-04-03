@@ -9,7 +9,7 @@
                 <view @tap="typeChange"
                       data-index="{{index}}"
                       data-item="{{item}}"
-                      class="child fonts gray6 pg-row25 {{swiperCurrent === index ? 'current':''}}">
+                      class="child fonts medium gray6 pg-row25 {{swiperCurrent === index ? 'current':''}}">
                     {{ item.type }}
                 </view>
             </block>
@@ -23,7 +23,7 @@
             <block wx:for="{{5}}"
                    wx:key="{{index}}">
                 <swiper-item>
-                    <goods :datalist.sync="datalist" />
+                    <slot />
                 </swiper-item>
             </block>
         </swiper>
@@ -40,10 +40,6 @@ export default class GoodsSwiper extends wepy.component {
         },
         types: {
             type: Array,
-            default: undefined
-        },
-        datalist: {
-            type: String,
             default: undefined
         }
     }

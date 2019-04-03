@@ -8,4 +8,17 @@ $aligns:(center, left, right, justify);
 $verticals:(middle, baseline, top);
 .vertical{
     @include list-factory($verticals, vertical-align);
+    
+}
+.vertical-middle{
+    & > view,
+    &:after{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &:after{
+        height: 100%;
+        content: '';
+        visibility: hidden;
+    }
 }

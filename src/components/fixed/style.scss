@@ -1,0 +1,9 @@
+.fixed{
+    left    : 0;
+    bottom  : 0;
+    position: fixed;
+    &.top{
+        top: 0;
+        bottom: auto;
+    }
+}

@@ -1,0 +1,140 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <page>
+        <view class="pg25">
+            <text>满88元包邮</text>
+        </view>
+
+        <repeat for="{{goods}}"
+                key="index">
+            <shop-item :item.sync="item" />
+        </repeat>
+
+        <!-- 结算 -->
+        <fixed class="flex">
+            <view class="child flex u6">
+                <view @tap="allCheckClick"
+                      class="child pg-left25 vertical-middle">
+                    <view class="duration fast fonts large iconfont {{ allchecked ? 'pink unit-selected': 'gray8 unit-unselected'}}" />
+                    <view class="mg-top5 mg-left10">全选</view>
+                </view>
+                <view class="child align right pg-right25 vertical-middle">
+                    <view>合计：¥{{totalPrice}}.00元</view>
+                </view>
+            </view>
+            <view class="child bg pink align center vertical-middle u1"
+                  style="height:105rpx;"
+                  @tap="payment">
+                <view class="fonts {{ totalAmount ? 'gray10':'gray8'}}">
+                    <text>付款</text>
+                    <text wx:if="{{totalAmount}}">({{totalAmount}})</text>
+                </view>
+            </view>
+        </fixed>
+    </page>
+</template>
+<script>
+import _ from 'lodash'
+import wepy from 'wepy'
+import page from 'page'
+import content from 'content'
+import box from 'box'
+import fixed from 'fixed'
+import ShopItem from './components/shop-item'
+export default class Shopping extends wepy.page {
+    config = {
+        navigationBarTitleText: '购物车'
+    }
+
+    components = {
+        page,
+        content,
+        box,
+        fixed,
+        'shop-item': ShopItem
+    }
+
+    data = {
+        allchecked: true,  // 选中所有
+        totalPrice: 0,     // 总价格
+        totalAmount: 0,    // 总数量
+        paymentGoods: [],
+        goods: [{
+            id: 10,
+            title: '商品1',
+            price: 100,
+            format: '规格',
+            checked: true,
+            amount: 1
+        }, {
+            id: 2,
+            title: '商品2',
+            price: 200,
+            format: '规格',
+            checked: true,
+            amount: 1
+        }, {
+            id: 3,
+            title: '商品3',
+            price: 300,
+            format: '规格',
+            checked: true,
+            amount: 1
+        }]
+    }
+
+    events = {
+        checkClick(o) {
+            if (o.checked) {
+                this.allchecked = false
+            } else {
+                let result = this.goods.every(item => (item.checked))
+                if (result) this.allchecked = result
+            }
+            this.total()
+        },
+        countTotalPrice: () => this.total()
+    }
+
+    methods = {
+        allCheckClick() {
+            this.allchecked = !this.allchecked
+            this.goods.map(item => (item.checked = this.allchecked))
+            this.total()
+        },
+        payment: _.throttle(() => {
+            // 没有选中商品
+            if (this.totalAmount === 0) return
+
+            console.log('=======付款订单包含的商品列表=======')
+            console.log(this.paymentGoods)
+
+            // wx.navigateTo({
+            //     url: ''
+            // })
+        }, 3000)
+    }
+
+    /**
+     * 计算总价
+     */
+    total() {
+        this.paymentGoods = []
+        this.totalAmount = this.totalPrice = 0
+        this.goods.map(item => {
+            const { price, amount, checked } = item
+            if (checked) {
+                this.totalAmount += amount
+                this.paymentGoods.push(item)
+                return (this.totalPrice += price * amount)
+            }
+        })
+    }
+
+    onShow() {
+        this.total()
+    }
+}
+</script>

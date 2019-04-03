@@ -1,11 +1,14 @@
 @import './components/icon';
 @import './components/flex';
+@import './components/form';
 @import './components/align';
 @import './components/fonts';
+@import './components/button';
+@import './components/duration';
 @import './components/ellipsis';
 @import './components/box-model';
 @import './components/background';
 
-
-
-
+text{
+    display: inline-block;  
+}

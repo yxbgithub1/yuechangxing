@@ -3,29 +3,44 @@
 </style>
 <template>
     <page>
+        <!-- banner -->
         <view style="height:350rpx;"
               class="mg-bottom25 border col">
             <banner :datalist="banners" />
         </view>
-        <box>
-            <navigator class="align center tests"
-                       url="/pages/mall/tests"
-                       hover-class="none" />
+
+        <!-- 品牌入口 -->
+        <box class="flex pg-row25">
+            <repeat for="{{5}}"
+                    key="index">
+                <navigator class="child align center"
+                           hover-class="none"
+                           url="/pages/mall/tests">
+                    <view class="border all radius3 bg bggray19 u8"
+                          style="height:100rpx; margin:0 auto;">LOGO</view>
+                    <view class="mg-top20">试用申请</view>
+                </navigator>
+            </repeat>
         </box>
+
+        <!-- 商品列表 -->
         <box>
             <swiper :types="types"
-                    :height.sync="height"
-                    :datalist.sync="datalist" />
+                    :height.sync="height">
+                <goods :datalist.sync="datalist" />
+            </swiper>
         </box>
     </page>
 </template>
 <script>
 import wepy from 'wepy'
 import page from 'page'
-import banner from 'banner'
 import box from 'box'
+import banner from 'banner'
 import content from 'content'
 import swiper from './components/swiper'
+import goods from './components/goods'
+
 export default class Index extends wepy.page {
     config = {
         navigationBarTitleText: '商城'
@@ -36,11 +51,12 @@ export default class Index extends wepy.page {
         content,
         banner,
         box,
-        swiper
+        swiper,
+        goods
     }
 
     data = {
-        childHeight: 520,
+        childHeight: 480,
         height: '0',
         banners: [{
             img: 'http://p3.qhimg.com/t01e29d24cead7ac0fc.jpg',
@@ -77,7 +93,6 @@ export default class Index extends wepy.page {
     events = {
         swiperChange() {
             this.height = this.height * 1.2
-            console.log(1)
             this.$apply()
         },
         tabbarSwiperChange({ data }) {

@@ -11,7 +11,7 @@
     white-space: nowrap;
     text-overflow: ellipsis; 
 
-    @for $i from 3 through 6 {
+    @for $i from 2 through 6 {
         @include ellipsis-multi($i);
     }
 }

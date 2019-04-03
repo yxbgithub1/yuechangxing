@@ -1,0 +1,21 @@
+<style lang="scss">
+@import './style.scss';
+</style>
+<template>
+    <page>
+
+    </page>
+</template>
+<script>
+import wepy from 'wepy'
+import page from 'page'
+export default class Order extends wepy.page {
+    config = {
+        navigationBarTitleText: '提交订单'
+    }
+
+    components = {
+        page
+    }
+}
+</script>
